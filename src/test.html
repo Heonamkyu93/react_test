@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //concat , filter , map ,sclice ,스프레드(전개 )연산자
+    console.log("===========스프레드 연산자");  //복제
+        const a =[1,2,3];
+        const b =[...a];
+        b.push(4);
+        const c =[...b,5];
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        
+
+
+
+
+
+        console.log("===========추가하기");  //추가
+        const a2 = [1,2,3];
+        const b2 = a2.concat(4);
+        const c2 =[0,...b,5];
+        console.log(a2);
+        console.log(b2);
+        console.log(c2);
+
+
+
+        console.log("===========걸러내기");  // 삭제하기 
+
+        const a3 = [1,2,3];
+        const b3=a3.filter((n)=> {return n !=1});             //boolean을 return 받음  >> true 만걸러낸다
+        console.log(b3);
+
+
+
+        console.log("===========잘라내기");
+
+        const a4=[1,2,3];
+        const b4=a4.slice(0,1);
+        const c4=[...a4.slice(0,2),4,...a4.slice(2,3)];  // 그냥 slice 하면 배열안에 배열이 되어버린다 그래서 스프레드연산자를 사용
+        
+        
+        console.log(b4);
+        console.log(c4);
+        console.log("===========반복하기");
+
+        const a5 =[1,2,3];
+        const b5 = a5.map((n)=> n);    //중괄호 안쓰면 리턴 생략가능 중괄호가 없으면 리턴이 되는거 리턴이 생략된거니깐
+        console.log(b5);                // ...a 와 다른점은 값들을 가공가능
+       // a5.forEach((n) =>{console.log(n)});     //리턴못함
+
+
+       const a6={id:1,name:"홍길동"};
+       const b6={...a6,name:"임꺽정"}
+
+       console.log(b6);
+
+        const users = [
+        {id:1,name:"김",phone:"111"},
+        {id:2,name:"이",phone:"222"},
+        {id:3,name:"박",phone:"333"},
+        ];
+
+
+        const updateUserDto = {
+            id:2,name:"홍"
+        }
+
+
+        const newUsers=users.map(u=> u.id===updateUserDto.id?{...u,...updateUserDto}:u);
+        console.log(newUsers);
+
+</script>
+</body>
+</html>
